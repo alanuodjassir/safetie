@@ -8,30 +8,42 @@
 import SwiftUI
 
 struct ClickPageView: View {
+    @State var URL2 = ""
     var body: some View {
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         ZStack{
             
-            
             LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
             
-            
-            clickbutton()
-            
-            
-            
+            VStack{
+                
+                if !URL2.isEmpty {
+                    
+                    HStack {
+                        Text("Safe Link").foregroundColor(.red)
+                        Text(URL2)
+                        Image(systemName: "checkmark.shield.fill")
+                        Text("you are safe")
+                    }
+                   
+                }
+                
+                
+                ZStack{
+                    clickbutton()
+                    PasteButton(payloadType: String.self) { strings in
+                        guard let first = strings.first else { return }
+                        URL2 = first
+                    }
+
+                }.tint(Color("BGColor2"))
+                
+                    .foregroundColor(.red)
+            }
         }.ignoresSafeArea()
         
-      
+        
         
         
     }
