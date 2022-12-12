@@ -9,24 +9,34 @@ import SwiftUI
 
 struct ClickPageView: View {
     @State var URL2 = ""
+    @State var isSafe = false
     var body: some View {
         
         
         ZStack{
-            
-            LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
-            
+            if isSafe || URL2.isEmpty {
+                LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
+            } else {
+                LinearGradient(colors: [.red], startPoint: .top, endPoint: .bottom)
+            }
             VStack{
                 
                 if !URL2.isEmpty {
-                    
-                    HStack {
-                        Text("Safe Link").foregroundColor(.red)
-                        Text(URL2)
-                        Image(systemName: "checkmark.shield.fill")
-                        Text("you are safe")
+                    if isSafe {
+                        HStack {
+                            Text("Safe Link").foregroundColor(.red)
+                            Text(URL2)
+                            Image(systemName: "checkmark.shield.fill")
+                            Text("you are safe")
+                        }
+                    } else {
+                        HStack {
+                            Text("UnSafe Link").foregroundColor(.red)
+                            Text(URL2)
+                            Image(systemName: "xmark.shield.fill")
+                            Text("you are unsafe")
+                        }
                     }
-                   
                 }
                 
                 
@@ -37,7 +47,7 @@ struct ClickPageView: View {
                         URL2 = first
                     }
 
-                }.tint(Color("BGColor2"))
+                }.tint(Color("ButtonColor"))
                 
                     .foregroundColor(.red)
             }
