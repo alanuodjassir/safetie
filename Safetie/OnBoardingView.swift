@@ -33,12 +33,7 @@ struct OnBoardingView: View {
                 Button {
                     
                 } label: {
-                    Text("Start").foregroundColor(.white).background{
-                       
-                       
-                        RoundedRectangle(cornerRadius: 12)
-                            .frame(width: 200, height: 45).foregroundColor(Color("ButtonColor")).shadow(radius: 0.3)
-                    }
+                    ButtonView(Word1: "Start")
                 }
 
             }
@@ -86,5 +81,18 @@ struct TextLineView: View {
             Text(Word1)
             Text(Word2).foregroundColor(Color("ButtonColor")).bold()
         }.font(.title)
+    }
+}
+
+struct ButtonView: View {
+    @State var Word1 = "With"
+    @State var color = Color("ButtonColor")
+    var body: some View {
+        Text(Word1).foregroundColor(.white).background{
+        
+        
+            RoundedRectangle(cornerRadius: 12)
+                .frame(width: 200, height: 45).foregroundColor(color).shadow(radius: 0.3)
+        }
     }
 }
