@@ -88,6 +88,7 @@ struct clickbutton: View {
             Circle().fill(Color.white.opacity(0.35)).frame(width: 250,height: 250).scaleEffect(self.animetd ? 1:0)
             Circle().fill(Color.white.opacity(0.45)).frame(width: 350,height: 300).scaleEffect(self.animetd ? 1:0)
             
+            
             Circle().fill(Color("ButtonColor")).frame(width: 100,height: 100)
             
             
