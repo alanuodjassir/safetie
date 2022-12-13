@@ -22,11 +22,9 @@ struct ClickPageView: View {
             VStack{
                 
                 if  ans != nil   {
-                    if ans?.unsafe == false{
+                    if ans?.unsafe == false && ans?.success == true{
                         HStack {
-                            
-                            
-                            
+
                             
                             Text("Safe Link")
                             
@@ -34,7 +32,10 @@ struct ClickPageView: View {
                             Image(systemName: "checkmark.shield.fill")
                             Text("you are safe")
                         }
-                    } else {
+                    } else if  ans?.unsafe == false && ans?.success == false {
+                        Text("URL is wrong make sure to copy right URL")
+                    }
+                    else {
                         
                         HStack {
                             
@@ -53,6 +54,7 @@ struct ClickPageView: View {
                     PasteButton(payloadType: String.self) { strings in
                         guard let first = strings.first else { return }
                         URL2 = first
+                        
                         Api().getSafety(url: URL2, completion: { Welcome in
                             ans =   Welcome
                             
@@ -116,7 +118,7 @@ class Api {
         URLSession.shared.dataTask(with: url) { (data, _ , _ ) in
             let safety = try?JSONDecoder().decode(Welcome.self, from: data!)
             DispatchQueue.main.async {
-                completion(safety ?? Welcome(success: false, unsafe: true))
+                completion(safety ?? Welcome(success: false, unsafe: false))
             }
             
         }.resume()
