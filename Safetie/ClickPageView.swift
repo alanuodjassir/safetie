@@ -17,21 +17,29 @@ struct ClickPageView: View {
             if isSafe || URL2.isEmpty {
                 LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
             } else {
-                LinearGradient(colors: [.red], startPoint: .top, endPoint: .bottom)
+                LinearGradient(colors: [Color("HackedBG"),Color("HackedBG2")], startPoint: .top, endPoint: .bottom)
             }
             VStack{
                 
                 if !URL2.isEmpty {
                     if isSafe {
                         HStack {
-                            Text("Safe Link").foregroundColor(.red)
+          
+                            
+                            
+                            
+                            Text("Safe Link")
+                            
                             Text(URL2)
                             Image(systemName: "checkmark.shield.fill")
                             Text("you are safe")
                         }
                     } else {
+                    
                         HStack {
-                            Text("UnSafe Link").foregroundColor(.red)
+
+                           
+                            Text("Haked Link")
                             Text(URL2)
                             Image(systemName: "xmark.shield.fill")
                             Text("you are unsafe")
