@@ -147,3 +147,8 @@ class Api {
     
 }
 
+//var url = "ipqualityscore.com"
+//if url.contains("https://"){
+//    url.split(separator: "https://").first}
+//
+
