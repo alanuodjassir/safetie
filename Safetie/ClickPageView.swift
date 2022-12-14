@@ -10,6 +10,7 @@ import SwiftUI
 struct ClickPageView: View {
     @State var URL2 = ""
     @State   var ans : Welcome? = nil
+    @AppStorage("key1")  var shouldshowonb = true
     var body: some View {
         
         
@@ -90,7 +91,9 @@ struct ClickPageView: View {
                 
             }
         }.ignoresSafeArea()
-        
+            .fullScreenCover(isPresented: $shouldshowonb ){
+                  OnBoardingView(shouldshowonb: $shouldshowonb)
+                 }.ignoresSafeArea(.all)
     }
 }
 

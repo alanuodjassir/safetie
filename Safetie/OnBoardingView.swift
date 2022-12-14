@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnBoardingView: View {
+    @Binding var shouldshowonb : Bool
     var body: some View {
         
         ZStack{
@@ -31,7 +32,7 @@ struct OnBoardingView: View {
                 }
                 
                 Button {
-                    
+                    shouldshowonb.toggle()
                 } label: {
                     ButtonView(Word1: "Start")
                 }
@@ -46,7 +47,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
      
 
-        OnBoardingView()
+        OnBoardingView(shouldshowonb: .constant(true))
     }
 }
 
