@@ -79,7 +79,7 @@ struct ClickPageView: View {
                         {
                             ButtonView(Word1: "New verfication", color: Color("HackedBG"))}
                     }
-
+   
                   
                 }
                 
