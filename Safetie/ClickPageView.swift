@@ -28,36 +28,48 @@ struct ClickPageView: View {
                         
                         //if link is safe
                         VStack (alignment: .leading)  {
-                                                        HStack{
-                                                            Text("Safe Link").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
-                                                            
-                                                            
-                                                            Image(systemName: "checkmark.shield.fill")
-                                                                .foregroundColor(Color("BGColor2"))
-                                                                .font(.largeTitle).fontWeight(.bold)
-                                                           
-                                                            
-                                                        }
-                                                        
-                                                        
-                                                        Text("you are safe")
+                            HStack{
+                                Text("Safe Link").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+                                
+                                
+                                Image(systemName: "checkmark.shield.fill")
+                                    .foregroundColor(Color("BGColor2"))
+                                    .font(.largeTitle).fontWeight(.bold)
+                                
+                                
+                            }
+                            
+                            
+                            Text("you are safe")
                                 .font(.title).fontWeight(.bold).foregroundColor(.white)
+                            
                         } .padding(.leading, -110)
+                        
+                        
+                        
                     } else if  ans?.unsafe == false && ans?.success == false {
                         //if link is not right
+                        
+                        
                         Text("URL is wrong make sure to copy right URL")
                     }
+                    
                     else {
                         //if link is Unsafe
                         HStack {
-                            
+LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
                             
                             Text("Haked Link")
                             Text(URL2)
                             Image(systemName: "xmark.shield.fill")
-                            Text("you are unsafe")
+                            
+                            Text("This link is UnAuthorized")
+                            
                         }
+                        
                     }
+                    
+                    
                 }
                 
                 
@@ -80,6 +92,7 @@ struct ClickPageView: View {
                     }
                     
                 }.tint(Color("ButtonColor"))
+              
                 if !URL2.isEmpty {
                     
                     Button {
@@ -93,7 +106,7 @@ struct ClickPageView: View {
                         }
                         else
                         {
-                            ButtonView(Word1: "New verfication", color: Color("HackedBG"))}
+                            ButtonView(Word1: "New verfication", color: Color("buttoncolorh"))}
                     }
    
                   
@@ -102,7 +115,7 @@ struct ClickPageView: View {
             }
         }.ignoresSafeArea()
             .fullScreenCover(isPresented: $shouldshowonb ){
-                  OnBoardingView(shouldshowonb: $shouldshowonb)
+            OnBoardingView(shouldshowonb: $shouldshowonb)
                  }.ignoresSafeArea(.all)
     }
 }

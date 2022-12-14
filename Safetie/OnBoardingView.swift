@@ -93,7 +93,6 @@ struct ButtonView: View {
         
         
             RoundedRectangle(cornerRadius: 12)
-                .frame(width: 200, height: 45).foregroundColor(color).shadow(radius: 0.3)
-        }
+                .frame(width: 200, height: 45).foregroundColor(color).shadow(radius: 0.3) }
     }
 }
