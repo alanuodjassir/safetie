@@ -26,10 +26,8 @@ struct ClickPageView: View {
                         
                         //if link is safe
                         HStack {
-
-                            
+ 
                             Text("Safe Link")
-                            
                             Text(URL2)
                             Image(systemName: "checkmark.shield.fill")
                             Text("you are safe")
@@ -58,6 +56,7 @@ struct ClickPageView: View {
                         guard let first = strings.first else { return }
                         URL2 = first
                         
+                        
                         Api().getSafety(url: URL2, completion: { Welcome in
                             ans =   Welcome
                             
@@ -65,6 +64,24 @@ struct ClickPageView: View {
                     }
                     
                 }.tint(Color("ButtonColor"))
+                if !URL2.isEmpty {
+                    
+                    Button {
+                        URL2 = ""
+                        ans = nil
+                    } label: {
+                        if ans?.unsafe == false && ans?.success == true{
+                            ButtonView(Word1: "New verfication")
+                        }else if  ans?.unsafe == false && ans?.success == false {
+                            ButtonView(Word1: "New verfication")
+                        }
+                        else
+                        {
+                            ButtonView(Word1: "New verfication", color: Color("HackedBG"))}
+                    }
+
+                  
+                }
                 
             }
         }.ignoresSafeArea()
@@ -129,3 +146,4 @@ class Api {
     }
     
 }
+
