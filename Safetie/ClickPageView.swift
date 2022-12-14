@@ -13,6 +13,7 @@ struct ClickPageView: View {
     @AppStorage("key1")  var shouldshowonb = true
     var body: some View {
         
+          
         
         ZStack{
             if ans == nil || ans?.unsafe == false {
