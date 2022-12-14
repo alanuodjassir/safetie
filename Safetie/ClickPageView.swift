@@ -26,13 +26,22 @@ struct ClickPageView: View {
                     if ans?.unsafe == false && ans?.success == true{
                         
                         //if link is safe
-                        HStack {
- 
-                            Text("Safe Link")
-                            Text(URL2)
-                            Image(systemName: "checkmark.shield.fill")
-                            Text("you are safe")
-                        }
+                        VStack (alignment: .leading)  {
+                                                        HStack{
+                                                            Text("Safe Link").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+                                                            
+                                                            
+                                                            Image(systemName: "checkmark.shield.fill")
+                                                                .foregroundColor(Color("BGColor2"))
+                                                                .font(.largeTitle).fontWeight(.bold)
+                                                           
+                                                            
+                                                        }
+                                                        
+                                                        
+                                                        Text("you are safe")
+                                .font(.title).fontWeight(.bold).foregroundColor(.white)
+                        } .padding(.leading, -110)
                     } else if  ans?.unsafe == false && ans?.success == false {
                         //if link is not right
                         Text("URL is wrong make sure to copy right URL")
