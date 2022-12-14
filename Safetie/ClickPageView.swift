@@ -23,6 +23,8 @@ struct ClickPageView: View {
                 
                 if  ans != nil   {
                     if ans?.unsafe == false && ans?.success == true{
+                        
+                        //if link is safe
                         HStack {
 
                             
@@ -33,10 +35,11 @@ struct ClickPageView: View {
                             Text("you are safe")
                         }
                     } else if  ans?.unsafe == false && ans?.success == false {
+                        //if link is not right
                         Text("URL is wrong make sure to copy right URL")
                     }
                     else {
-                        
+                        //if link is Unsafe
                         HStack {
                             
                             
