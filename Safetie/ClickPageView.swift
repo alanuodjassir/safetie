@@ -56,6 +56,13 @@ struct ClickPageView: View {
                         guard let first = strings.first else { return }
                         URL2 = first
                         
+                        if URL2.contains("https:// "){
+                    URL2.split(separator: "https://").first
+                                                    
+                                                }
+                        
+                        
+                        
                         
                         Api().getSafety(url: URL2, completion: { Welcome in
                             ans =   Welcome
