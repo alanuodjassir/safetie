@@ -17,7 +17,7 @@ struct ClickPageView: View {
             if ans == nil || ans?.unsafe == false {
                 LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
             } else {
-                LinearGradient(colors: [Color("HackedBG"),Color("HackedBG2")], startPoint: .top, endPoint: .bottom)
+                LinearGradient(colors: [Color("buttoncolorH"),Color("buttoncolorH")], startPoint: .top, endPoint: .bottom)
             }
             VStack{
                 
