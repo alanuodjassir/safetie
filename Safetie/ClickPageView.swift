@@ -11,6 +11,8 @@ struct ClickPageView: View {
     @State var URL2 = ""
     @State   var ans : Welcome? = nil
     @AppStorage("key1")  var shouldshowonb = true
+ //   @State var color = "ButtonColor"
+    
     var body: some View {
         
           
@@ -83,7 +85,13 @@ struct ClickPageView: View {
                 
                 
                 ZStack{
-                    clickbutton()
+                    if ans?.unsafe == true {
+                        clickbutton( colorName: "buttoncolorh")
+                        
+                    }else{
+                        clickbutton()
+                        
+                    }
                     PasteButton(payloadType: String.self) { strings in
                         guard let first = strings.first else { return }
                         URL2 = first
@@ -100,7 +108,7 @@ struct ClickPageView: View {
                         })
                     }
                     
-                }.tint(Color("ButtonColor"))
+                }.tint(Color(ans?.unsafe == true ? "buttoncolorh" : "ButtonColor"))
               
                 if ans != nil {
                     
@@ -140,7 +148,7 @@ struct ClickPageView_Previews: PreviewProvider {
 
 struct clickbutton: View {
     @State var animetd = false
-    
+    @State var colorName = "ButtonColor"
     var body: some View {
         
         ZStack{
@@ -151,7 +159,7 @@ struct clickbutton: View {
             Circle().fill(Color.white.opacity(0.45)).frame(width: 350,height: 350).scaleEffect(self.animetd ? 1:0)
             
             
-            Circle().fill(Color("ButtonColor")).frame(width: 150,height: 150)
+            Circle().fill(Color(colorName)).frame(width: 150,height: 150)
             
             
         }
