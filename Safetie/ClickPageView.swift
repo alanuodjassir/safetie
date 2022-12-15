@@ -51,19 +51,28 @@ struct ClickPageView: View {
                         //if link is not right
                         
                         
-                        Text("URL is wrong make sure to copy right URL")
+                        Text("URL is wrong make sure to copy right URL")  .fontWeight(.bold).foregroundColor(.white)
                     }
                     
                     else {
                         //if link is Unsafe
                         HStack {
-LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
                             
-                            Text("Haked Link")
-                            Text(URL2)
-                            Image(systemName: "xmark.shield.fill")
+                            VStack{
+                                HStack{
+                                    Text("Haked Link")
+                                        .font(.title).fontWeight(.bold).foregroundColor(.white)
+                                    Image(systemName: "xmark.shield.fill")
+                                        .foregroundColor(Color("HackedBG2"))
+                                    .font(.largeTitle).fontWeight(.bold)}
+                                Text("You Are Unsafe")
+                                    .font(.title)
+                                    .foregroundColor(.white)
+                                
+                            }.padding(.leading, -110)
                             
-                            Text("This link is UnAuthorized")
+                            
+                            
                             
                         }
                         
