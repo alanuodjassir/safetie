@@ -21,8 +21,7 @@ struct OnBoardingView: View {
                 VStack{
                     TextLineView()
                     RectView()
-                    RectView(SFName: "exclamationmark.triangle", Title: "Report haked links", Content: "See how many people vistied the link.")
-                    RectView(SFName: "person.2", Title: "See Vistors", Content: "See how many people vistied the link.")
+                 
                     
                 }
                 

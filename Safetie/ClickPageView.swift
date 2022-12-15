@@ -102,7 +102,7 @@ struct ClickPageView: View {
                     
                 }.tint(Color("ButtonColor"))
               
-                if !URL2.isEmpty {
+                if ans != nil {
                     
                     Button {
                         URL2 = ""
