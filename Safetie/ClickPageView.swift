@@ -3,14 +3,15 @@
 //  idk
 //
 //  Created by Alanoud Saleh on 14/05/1444 AH.
-//
+// www.google.com
+// funnygames.veramorozova.com
 
 import SwiftUI
 
 struct ClickPageView: View {
     @State var URL2 = ""
     @State   var ans : Welcome? = nil
-    @AppStorage("key1")  var shouldshowonb = true
+    @AppStorage("key2")  var shouldshowonb = true
  //   @State var color = "ButtonColor"
     
     var body: some View {
@@ -42,7 +43,7 @@ struct ClickPageView: View {
                             }
                             
                             
-                            Text("you are safe")
+                            Text("You're all set.")
                                 .font(.title).fontWeight(.bold).foregroundColor(.white)
                             
                         } .padding(.leading, -110)
@@ -60,14 +61,14 @@ struct ClickPageView: View {
                         //if link is Unsafe
                         HStack {
                             
-                            VStack{
+                            VStack(alignment:.leading){
                                 HStack{
-                                    Text("Haked Link")
+                                    Text("Unsafe Link")
                                         .font(.title).fontWeight(.bold).foregroundColor(.white)
                                     Image(systemName: "xmark.shield.fill")
                                         .foregroundColor(Color("HackedBG2"))
                                     .font(.largeTitle).fontWeight(.bold)}
-                                Text("You Are Unsafe")
+                                Text("Be careful.")
                                     .font(.title)
                                     .foregroundColor(.white)
                                 
@@ -107,6 +108,7 @@ struct ClickPageView: View {
                             
                         })
                     }
+                    
                     
                 }.tint(Color(ans?.unsafe == true ? "buttoncolorh" : "ButtonColor"))
               

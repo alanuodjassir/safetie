@@ -1,7 +1,6 @@
 //
 //  ContentView.swift
-//  idk
-//
+//  idk//
 //  Created by Alanoud Saleh on 13/05/1444 AH.
 //meow
 //edjlsijr
@@ -18,11 +17,17 @@ struct OnBoardingView: View {
             VStack(spacing:75){
                
                 
-                VStack{
+                VStack(spacing:20){
                     TextLineView()
-                    RectView()
-                 
                     
+                    RectView(SFName:"checkmark.diamond", Title: "Phishing URL Detection", Content: "Detect malicious URLs used for phishing.          ")
+                    RectView(SFName: "exclamationmark.triangle", Title: "Malicious URL Scanning", Content: "Identify URLs used for malware and viruses.                                 ")
+                    RectView(SFName: "envelope.badge.shield.half.filled", Title: "Email Spammer Domains", Content: "Sift through SPAM emails with detection for domains.")
+                  
+              
+              
+ 
+     
                 }
                 
                 VStack(alignment:.leading){
@@ -68,6 +73,7 @@ struct RectView: View {
                     Text(Title).foregroundColor(.white).bold()
                     Text(Content).foregroundColor(.white.opacity(0.7))
                 }
+                Spacer()
             }.padding(.horizontal,40)
         }
     }
