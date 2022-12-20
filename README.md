@@ -11,15 +11,16 @@ https://testflight.apple.com/join/sh6ATMrK
 
 
 
+## App InterFace
+![](Screenshot%201444-05-24%20at%206.02.58%20PM.png)
 
 
 
 
 
 
-
-
-
+## Used API
+https://www.ipqualityscore.com/documentation/malicious-url-scanner-api/overview
 
 
 
