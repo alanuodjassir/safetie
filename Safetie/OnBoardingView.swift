@@ -94,7 +94,8 @@ struct ButtonView: View {
     @State var Word1 = "With"
     @State var color = Color("ButtonColor")
     var body: some View {
-        Text(Word1).foregroundColor(.white).background{
+        Text(Word1).frame(width: 200, height: 45)
+            .foregroundColor(.white).background{
         
         
             RoundedRectangle(cornerRadius: 12)

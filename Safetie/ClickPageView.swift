@@ -11,7 +11,7 @@ import SwiftUI
 struct ClickPageView: View {
     @State var URL2 = ""
     @State   var ans : Welcome? = nil
-    @AppStorage("key2")  var shouldshowonb = true
+    @AppStorage("key3")  var shouldshowonb = true
  //   @State var color = "ButtonColor"
     
     var body: some View {
