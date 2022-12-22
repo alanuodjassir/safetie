@@ -1,9 +1,9 @@
 # Safetie
 Safetie is a free tool to detect malicious URLs including malware, scam and phishing links.
 
-## To test the app via Testflight
+## Download the App
 
-https://testflight.apple.com/join/sh6ATMrK
+https://apps.apple.com/sa/app/safetie/id1660452779
 
 
 
