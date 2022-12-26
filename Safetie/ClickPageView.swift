@@ -5,12 +5,12 @@
 //  Created by Alanoud Saleh on 14/05/1444 AH.
 // www.google.com
 // funnygames.veramorozova.com
-
+//test
 import SwiftUI
 
 struct ClickPageView: View {
     @State var URL2 = ""
-    @State   var ans : Welcome? = nil
+    @State   var ans : result? = nil
     @AppStorage("key3")  var shouldshowonb = true
  //   @State var color = "ButtonColor"
     
@@ -25,6 +25,12 @@ struct ClickPageView: View {
                 LinearGradient(colors: [Color("HackedBG"),Color("HackedBG2")], startPoint: .top, endPoint: .bottom)
             }
             VStack{
+               
+                if !URL2.isEmpty && ans == nil{
+                    ProgressView()
+                } else if  ans?.unsafe == false && ans?.success == false {
+                    
+                }
                 
                 if  ans != nil   {
                     if ans?.unsafe == false && ans?.success == true{
@@ -106,7 +112,7 @@ struct ClickPageView: View {
                             URL2 = arr.reduce("", +)
                             
                         }
-                        
+                      
 
                         Api().getSafety(url: URL2, completion: { Welcome in
                             ans =   Welcome
@@ -154,46 +160,36 @@ struct ClickPageView_Previews: PreviewProvider {
 
 
 struct clickbutton: View {
-    @State var animetd = false
+   
     @State var colorName = "ButtonColor"
     var body: some View {
         
         ZStack{
-            Circle().fill(Color.white.opacity(0.10)).frame(width: 200,height: 200).scaleEffect(self.animetd ? 1:0)
-            
-            Circle().fill(Color.white.opacity(0.25)).frame(width: 300,height: 300).scaleEffect(self.animetd ? 1:0)
-            Circle().fill(Color.white.opacity(0.35)).frame(width: 250,height: 300).scaleEffect(self.animetd ? 1:0)
-            Circle().fill(Color.white.opacity(0.45)).frame(width: 350,height: 350).scaleEffect(self.animetd ? 1:0)
-            
-            
+      
+            Spacer().frame(width: 350, height: 350)
             Circle().fill(Color(colorName)).frame(width: 150,height: 150)
-            
+           
             
         }
-        .onAppear{
-            
-            self.animetd.toggle()
-        }
-        .animation(Animation.linear(duration: 1.5).repeatForever())
-        
+     
     }
 }
 
 
-struct Welcome : Decodable {
+struct result : Decodable {
     
     let success, unsafe: Bool
 }
 
 class Api {
-    func getSafety(url: String , completion : @escaping (Welcome)->()){
+    func getSafety(url: String , completion : @escaping (result)->()){
         
         guard let url = URL(string:"https://ipqualityscore.com/api/json/url/bELlKrN0Eq1aICFz5yHk37KlcNBvkI44/\(url)") else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _ , _ ) in
-            let safety = try?JSONDecoder().decode(Welcome.self, from: data!)
+            let safety = try?JSONDecoder().decode(result.self, from: data!)
             DispatchQueue.main.async {
-                completion(safety ?? Welcome(success: false, unsafe: false))
+                completion(safety ?? result(success: false, unsafe: false))
             }
             
         }.resume()
