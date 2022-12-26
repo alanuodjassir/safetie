@@ -101,6 +101,11 @@ struct ClickPageView: View {
                             URL2 = String(URL2.split(separator: "https://").first!)
 
                                                 }
+                        if URL2.contains("/"){
+                            let arr = URL2.split(separator: "/")
+                            URL2 = arr.reduce("", +)
+                            
+                        }
                         
 
                         Api().getSafety(url: URL2, completion: { Welcome in
