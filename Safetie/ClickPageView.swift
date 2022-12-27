@@ -183,9 +183,12 @@ struct result : Decodable {
 
 class Api {
     func getSafety(url: String , completion : @escaping (result)->()){
-        
-        guard let url = URL(string:"https://ipqualityscore.com/api/json/url/bELlKrN0Eq1aICFz5yHk37KlcNBvkI44/\(url)") else { return }
-        
+    
+        guard let url = URL(string:"https://ipqualityscore.com/api/json/url/bELlKrN0Eq1aICFz5yHk37KlcNBvkI44/\(url)") else {
+            completion( result(success: false, unsafe: false))
+
+            return }
+   
         URLSession.shared.dataTask(with: url) { (data, _ , _ ) in
             let safety = try?JSONDecoder().decode(result.self, from: data!)
             DispatchQueue.main.async {
