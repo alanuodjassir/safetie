@@ -30,5 +30,5 @@ https://www.ipqualityscore.com/documentation/malicious-url-scanner-api/overview
 - [@LulwahAlmisfer](https://github.com/LulwahAlmisfer)
 - [@Bashayersg](https://github.com/Bashayersg)
 - [@ibtisam32](https://github.com/Ibtisam32)
-- [@nenyyyy](https://github.com/nenyyyy)
+- [@Alanuodjassir](https://github.com/alanuodjassir)
 - [@DoaaNwe](https://github.com/DoaaNwe)
