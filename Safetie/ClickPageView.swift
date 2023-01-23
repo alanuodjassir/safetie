@@ -180,7 +180,7 @@ struct clickbutton: View {
 Circle()
 .foregroundColor(Color(colorName))
 .frame(width: 250,height: 250)
-.opacity(0.4).scaleEffect(self.animation ? 1:0)
+.opacity(0.6).scaleEffect(self.animation ? 1:0)
             
             
             
@@ -192,7 +192,7 @@ Circle()
     Circle()
     .foregroundColor(Color(colorName))
     .frame(width: 250,height: 215)
-    .opacity(0.1).scaleEffect(self.animation ? 1:0)
+    .opacity(0.2).scaleEffect(self.animation ? 1:0)
 
             
             
@@ -202,7 +202,7 @@ Circle()
     Circle()
     .foregroundColor(.white)
     .frame(width: 170,height: 190)
-    .opacity(0.3).scaleEffect(self.animation ? 1:0).scaleEffect(self.animation ? 1:0)
+    .opacity(0.5).scaleEffect(self.animation ? 1:0).scaleEffect(self.animation ? 1:0)
          
             
             
