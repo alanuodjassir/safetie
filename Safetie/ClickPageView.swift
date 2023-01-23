@@ -19,7 +19,14 @@ struct ClickPageView: View {
           
         
         ZStack{
-            if ans == nil || ans?.unsafe == false {
+        
+            if ans == nil {
+                LinearGradient(colors: [.white,.white], startPoint: .top, endPoint: .bottom)
+            }
+        
+         else if ans?.unsafe == false {
+
+                
                 LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
             } else {
                 LinearGradient(colors: [Color("HackedBG"),Color("HackedBG2")], startPoint: .top, endPoint: .bottom)
@@ -36,9 +43,11 @@ struct ClickPageView: View {
                     if ans?.unsafe == false && ans?.success == true{
                         
                         //if link is safe
-                        VStack (alignment: .leading)  {
-                            HStack{
-                                Text("Safe Link").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+        VStack (alignment: .leading)  {
+        
+            
+    HStack{
+    Text("Safe Link").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
                                 
                                 
                                 Image(systemName: "checkmark.shield.fill")
@@ -160,17 +169,68 @@ struct ClickPageView_Previews: PreviewProvider {
 
 
 struct clickbutton: View {
-   
-    @State var colorName = "ButtonColor"
+@State var animation = false
+@State var colorName = "ButtonColor"
     var body: some View {
         
         ZStack{
-      
-            Spacer().frame(width: 350, height: 350)
-            Circle().fill(Color(colorName)).frame(width: 150,height: 150)
-           
             
+    Spacer().frame(width: 350, height: 350)
+
+Circle()
+.foregroundColor(Color(colorName))
+.frame(width: 250,height: 250)
+.opacity(0.4).scaleEffect(self.animation ? 1:0)
+            
+            
+            
+   
+            
+            
+            
+            
+    Circle()
+    .foregroundColor(Color(colorName))
+    .frame(width: 250,height: 215)
+    .opacity(0.1).scaleEffect(self.animation ? 1:0)
+
+            
+            
+            
+            
+            
+    Circle()
+    .foregroundColor(.white)
+    .frame(width: 170,height: 190)
+    .opacity(0.3).scaleEffect(self.animation ? 1:0).scaleEffect(self.animation ? 1:0)
+         
+            
+            
+            
+            
+            Circle()
+        .foregroundColor(.white)
+    .frame(width: 140,height: 190)
+    .scaleEffect(self.animation ? 1:0)
+            
+      
+            
+            
+            
+        /// main circle
+Circle().fill(Color(colorName))
+                
+.frame(width: 100,height: 100)
+        
+
+            
+            
+        }.onAppear{
+            
+        self.animation.toggle()
         }
+
+        .animation(Animation.easeInOut)
      
     }
 }

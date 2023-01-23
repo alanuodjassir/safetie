@@ -12,8 +12,8 @@ struct OnBoardingView: View {
         
         ZStack{
             
-            
-            LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
+//            
+//            LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
             VStack(spacing:75){
                
                 
