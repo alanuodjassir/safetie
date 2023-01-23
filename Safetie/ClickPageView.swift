@@ -12,6 +12,8 @@ struct ClickPageView: View {
     @State var URL2 = ""
     @State   var ans : result? = nil
     @AppStorage("key3")  var shouldshowonb = true
+    @State var animation = false
+
  //   @State var color = "ButtonColor"
     
     var body: some View {
@@ -21,7 +23,7 @@ struct ClickPageView: View {
         ZStack{
         
             if ans == nil {
-                LinearGradient(colors: [.white,.white], startPoint: .top, endPoint: .bottom)
+               // LinearGradient(colors: [.white], startPoint: .top, endPoint: .bottom)
             }
         
          else if ans?.unsafe == false {
@@ -33,8 +35,9 @@ struct ClickPageView: View {
             }
             VStack{
                
-                if !URL2.isEmpty && ans == nil{
+                if !URL2.isEmpty && ans == nil {
                     ProgressView()
+                  
                 } else if  ans?.unsafe == false && ans?.success == false {
                     
                 }
@@ -102,16 +105,16 @@ struct ClickPageView: View {
                 
                 ZStack{
                     if ans?.unsafe == true {
-                        clickbutton( colorName: "buttoncolorh")
+                        clickbutton( animation: $animation, colorName: "buttoncolorh")
                         
                     }else{
-                        clickbutton()
+                        clickbutton(animation: $animation)
                         
                     }
                     PasteButton(payloadType: String.self) { strings in
                         guard let first = strings.first else { return }
                         URL2 = first
-                        
+                        animation.toggle()
                         if URL2.contains("https://"){
                             URL2 = String(URL2.split(separator: "https://").first!)
 
@@ -137,8 +140,10 @@ struct ClickPageView: View {
                     Button {
                         URL2 = ""
                         ans = nil
+                        animation.toggle()
                     } label: {
                         if ans?.unsafe == false && ans?.success == true{
+                            
                             ButtonView(Word1: "New verfication")
                         }else if  ans?.unsafe == false && ans?.success == false {
                             ButtonView(Word1: "New verfication")
@@ -147,21 +152,23 @@ struct ClickPageView: View {
                         {
                             ButtonView(Word1: "New verfication", color: Color("buttoncolorh"))}
                     }
-   
+                    .padding(.top)
                   
                 }
                 
-            }
+            }.animation(Animation.spring())
         }.ignoresSafeArea()
             .fullScreenCover(isPresented: $shouldshowonb ){
             OnBoardingView(shouldshowonb: $shouldshowonb)
                  }.ignoresSafeArea(.all)
+            
     }
 }
 
 struct ClickPageView_Previews: PreviewProvider {
     static var previews: some View {
         ClickPageView()
+       // clickbutton(animation: .constant(false))
     }
 }
 
@@ -169,66 +176,68 @@ struct ClickPageView_Previews: PreviewProvider {
 
 
 struct clickbutton: View {
-@State var animation = false
+    @Binding var animation :Bool
 @State var colorName = "ButtonColor"
     var body: some View {
         
         ZStack{
             
-    Spacer().frame(width: 350, height: 350)
-
-Circle()
-.foregroundColor(Color(colorName))
-.frame(width: 250,height: 250)
-.opacity(0.6).scaleEffect(self.animation ? 1:0)
+          //  Spacer().frame(width: 350, height: 350)
             
-            
-            
-   
-            
-            
-            
-            
-    Circle()
-    .foregroundColor(Color(colorName))
-    .frame(width: 250,height: 215)
-    .opacity(0.2).scaleEffect(self.animation ? 1:0)
-
-            
-            
-            
-            
-            
-    Circle()
-    .foregroundColor(.white)
-    .frame(width: 170,height: 190)
-    .opacity(0.5).scaleEffect(self.animation ? 1:0).scaleEffect(self.animation ? 1:0)
-         
-            
-            
-            
-            
-            Circle()
-        .foregroundColor(.white)
-    .frame(width: 140,height: 190)
-    .scaleEffect(self.animation ? 1:0)
-            
-      
-            
-            
-            
-        /// main circle
-Circle().fill(Color(colorName))
+         //   if animation {
+                Circle()
+                    .foregroundColor(Color(colorName))
+                    .frame(width: 250,height: 250)
+                    .opacity(0.6)
+                    .scaleEffect(self.animation ? 1:0)
                 
-.frame(width: 100,height: 100)
-        
-
+                
+                
+                
+                
+                
+                
+                
+                Circle()
+                    .foregroundColor(Color(colorName))
+                    .frame(width: 250,height: 215)
+                    .opacity(0.2).scaleEffect(self.animation ? 1:0)
+                
+                
+                
+                
+                
+                
+                Circle()
+                    .foregroundColor(.white)
+                    .frame(width: 170,height: 190)
+                    .opacity(0.5).scaleEffect(self.animation ? 1:0).scaleEffect(self.animation ? 1:0)
+                
+                
+                
+                
+                
+                Circle()
+                    .foregroundColor(.white)
+                    .frame(width: 140,height: 190)
+                    .scaleEffect(self.animation ? 1:0)
+            }
             
             
-        }.onAppear{
             
-        self.animation.toggle()
-        }
+            
+            /// main circle
+            Circle().fill(Color(colorName))
+            
+                .frame(width: 100,height: 100)
+            
+            
+     //   }
+            
+//        }.onAppear{
+//
+//        self.animation.toggle()
+//        }
 
         .animation(Animation.easeInOut)
      
