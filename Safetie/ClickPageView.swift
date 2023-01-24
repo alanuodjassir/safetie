@@ -22,7 +22,7 @@ struct ClickPageView: View {
         
         ZStack{
         
-            if ans == nil {
+            if ans == nil || ans?.unsafe == false && ans?.success == false {
                // LinearGradient(colors: [.white], startPoint: .top, endPoint: .bottom)
             }
         
@@ -103,37 +103,41 @@ struct ClickPageView: View {
                 }
                 
                 
-                ZStack{
-                    if ans?.unsafe == true {
-                        clickbutton( animation: $animation, colorName: "buttoncolorh")
-                        
-                    }else{
-                        clickbutton(animation: $animation)
-                        
-                    }
-                    PasteButton(payloadType: String.self) { strings in
-                        guard let first = strings.first else { return }
-                        URL2 = first
-                        animation.toggle()
-                        if URL2.contains("https://"){
-                            URL2 = String(URL2.split(separator: "https://").first!)
-
-                                                }
-                        if URL2.contains("/"){
-                            let arr = URL2.split(separator: "/")
-                            URL2 = arr.reduce("", +)
+                VStack {
+                    if URL2 == "" {
+                        Text("fdjngdl").foregroundColor(.red)}
+                    ZStack{
+                        if ans?.unsafe == true {
+                            clickbutton( animation: $animation, colorName: "buttoncolorh")
+                            
+                        }else{
+                            clickbutton(animation: $animation)
                             
                         }
-                      
+                        PasteButton(payloadType: String.self) { strings in
+                            guard let first = strings.first else { return }
+                            URL2 = first
+                            animation.toggle()
+                            if URL2.contains("https://"){
+                                URL2 = String(URL2.split(separator: "https://").first!)
 
-                        Api().getSafety(url: URL2, completion: { Welcome in
-                            ans =   Welcome
-                            
-                        })
-                    }
-                    
-                    
-                }.tint(Color(ans?.unsafe == true ? "buttoncolorh" : "ButtonColor"))
+                                                    }
+                            if URL2.contains("/"){
+                                let arr = URL2.split(separator: "/")
+                                URL2 = arr.reduce("", +)
+                                
+                            }
+                          
+
+                            Api().getSafety(url: URL2, completion: { Welcome in
+                                ans =   Welcome
+                                
+                            })
+                        }
+                        
+                        
+                    }.tint(Color(ans?.unsafe == true ? "buttoncolorh" : "ButtonColor"))
+                }
               
                 if ans != nil {
                     
