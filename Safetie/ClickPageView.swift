@@ -3,9 +3,14 @@
 //  idk
 //
 //  Created by Alanoud Saleh on 14/05/1444 AH.
+
+
+//test link
 // www.google.com
 // funnygames.veramorozova.com
-//test
+
+
+
 import SwiftUI
 
 struct ClickPageView: View {
@@ -21,16 +26,19 @@ struct ClickPageView: View {
           
         
         ZStack{
-        
+            
+        // firt view ,wrong url
             if ans == nil || ans?.unsafe == false && ans?.success == false {
                // LinearGradient(colors: [.white], startPoint: .top, endPoint: .bottom)
             }
-        
+            
+       
          else if ans?.unsafe == false {
 
-                
+                // safe view color
                 LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
             } else {
+                //haked view color
                 LinearGradient(colors: [Color("HackedBG"),Color("HackedBG2")], startPoint: .top, endPoint: .bottom)
             }
             VStack{
@@ -42,10 +50,11 @@ struct ClickPageView: View {
                     
                 }
                 
+                //if link is safe
                 if  ans != nil   {
                     if ans?.unsafe == false && ans?.success == true{
                         
-                        //if link is safe
+                        
         VStack (alignment: .leading)  {
         
             
@@ -67,9 +76,9 @@ struct ClickPageView: View {
                         } .padding(.leading, -110)
                         
                         
-                        
-                    } else if  ans?.unsafe == false && ans?.success == false {
                         //if link is not right
+                    } else if  ans?.unsafe == false && ans?.success == false {
+                       
                         
                         
                         Text("URL is wrong make sure to copy right URL")  .fontWeight(.bold).foregroundColor(.white)
@@ -105,7 +114,15 @@ struct ClickPageView: View {
                 
                 VStack {
                     if URL2 == "" {
-                        Text("fdjngdl").foregroundColor(.red)}
+                        
+        
+                        Text("Pleas Copy And Paste Link Here")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color("ButtonColor"))
+                            .multilineTextAlignment(.center)
+                        
+                    }
                     ZStack{
                         if ans?.unsafe == true {
                             clickbutton( animation: $animation, colorName: "buttoncolorh")
@@ -114,6 +131,9 @@ struct ClickPageView: View {
                             clickbutton(animation: $animation)
                             
                         }
+                        
+                        
+                        //past button
                         PasteButton(payloadType: String.self) { strings in
                             guard let first = strings.first else { return }
                             URL2 = first
@@ -133,7 +153,7 @@ struct ClickPageView: View {
                                 ans =   Welcome
                                 
                             })
-                        }
+                        }//past button
                         
                         
                     }.tint(Color(ans?.unsafe == true ? "buttoncolorh" : "ButtonColor"))
