@@ -16,7 +16,7 @@ import SwiftUI
 struct ClickPageView: View {
     @State var URL2 = ""
     @State   var ans : result? = nil
-    @AppStorage("key3")  var shouldshowonb = true
+    @AppStorage("key7")  var shouldshowonb = true
     @State var animation = false
 
  //   @State var color = "ButtonColor"
@@ -41,10 +41,10 @@ struct ClickPageView: View {
                 //haked view color
                 LinearGradient(colors: [Color("HackedBG"),Color("HackedBG2")], startPoint: .top, endPoint: .bottom)
             }
-            VStack{
+            VStack(spacing: 35){
                
                 if !URL2.isEmpty && ans == nil {
-                    ProgressView()
+                    ProgressView() //.padding(.bottom,25)
                   
                 } else if  ans?.unsafe == false && ans?.success == false {
                     
@@ -117,7 +117,7 @@ struct ClickPageView: View {
                         
         
                         Text("Pleas Copy And Paste Link Here")
-                            .font(.title2)
+                            .font(.title3)
                             .fontWeight(.semibold)
                             .foregroundColor(Color("ButtonColor"))
                             .multilineTextAlignment(.center)
@@ -137,7 +137,10 @@ struct ClickPageView: View {
                         PasteButton(payloadType: String.self) { strings in
                             guard let first = strings.first else { return }
                             URL2 = first
-                            animation.toggle()
+                            
+                            if !animation  {
+                                animation.toggle()
+                            }
                             if URL2.contains("https://"){
                                 URL2 = String(URL2.split(separator: "https://").first!)
 
