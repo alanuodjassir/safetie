@@ -118,7 +118,7 @@ struct ClickPageView: View {
                     if URL2 == "" {
                         
         
-                        Text("Pleas Copy And Paste Link Here")
+                        Text("Please Copy And Paste Link Here")
                             .font(.title3)
                             .fontWeight(.semibold)
                             .foregroundColor(Color("ButtonColor"))
