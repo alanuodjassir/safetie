@@ -17,16 +17,13 @@ struct OnBoardingView: View {
             VStack(spacing:75){
                
                 
-                VStack(spacing:20){
-                    TextLineView()
+                VStack(spacing:15){
+                   // TextLineView()
                     
                     RectView(SFName:"checkmark.diamond", Title: "Phishing URL Detection", Content: "Detect malicious URLs used for phishing.          ")
+                   
                     RectView(SFName: "exclamationmark.triangle", Title: "Malicious URL Scanning", Content: "Identify URLs used for malware and viruses.                                 ")
                     RectView(SFName: "envelope.badge.shield.half.filled", Title: "Email Spammer Domains", Content: "Sift through SPAM emails with detection for domains.")
-                  
-              
-              
- 
      
                 }
                 
@@ -62,15 +59,16 @@ struct RectView: View {
     @State var Content = "check any link before you open it to make sure it is safe link."
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 26).foregroundColor(Color("RectColor")).frame(width: 360, height: 73).opacity(0.5)
-            RoundedRectangle(cornerRadius: 26).foregroundColor(Color("RectColor")).frame(width: 335, height: 73)
+            RoundedRectangle(cornerRadius: 26).foregroundColor(Color("RectColor")).frame(width: 360, height: 85).opacity(0.5)
+            RoundedRectangle(cornerRadius: 26).foregroundColor(Color("RectColor")).frame(width: 335, height: 85)
             
             HStack{
                 
                 Image(systemName: SFName).foregroundColor(.white).font(.title)
-                
+                    .padding(5)
                 VStack(alignment: .leading){
                     Text(Title).foregroundColor(.white).bold()
+                 
                     Text(Content).foregroundColor(.white.opacity(0.7))
                 }
                 Spacer()
