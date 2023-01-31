@@ -18,7 +18,7 @@ struct ClickPageView: View {
     @State   var ans : result? = nil
     @AppStorage("key7")  var shouldshowonb = true
     @State var animation = false
-
+    let generator = UINotificationFeedbackGenerator()
  //   @State var color = "ButtonColor"
     
     var body: some View {
@@ -39,7 +39,9 @@ struct ClickPageView: View {
                 LinearGradient(colors: [Color("BGColor1"),Color("BGColor2")], startPoint: .top, endPoint: .bottom)
             } else {
                 //haked view color
-                LinearGradient(colors: [Color("HackedBG"),Color("HackedBG2")], startPoint: .top, endPoint: .bottom)
+                LinearGradient(colors: [Color("HackedBG"),Color("HackedBG2")], startPoint: .top, endPoint: .bottom).onAppear{
+                    self.generator.notificationOccurred(.warning)
+                }
             }
             VStack(spacing: 35){
                
